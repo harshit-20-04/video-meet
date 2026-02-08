@@ -1,0 +1,54 @@
+import httpStatus from "http-status";
+import User from "../models/userModel.js";
+import bcrypt from "bcrypt";
+import crypto from "crypto";
+
+
+
+const register = async (req, res) => {
+    const { name, username, email, password } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ username: username });
+        if (existingUser) {
+            return res.status(httpStatus.FOUND).json({ message: "User Already Exists" });
+        }
+        const hashedPass = await bcrypt.hash(password, 10);
+        const newUser = new User({
+            name: name,
+            username: username,
+            email: email,
+            password: hashedPass,
+        })
+
+        await newUser.save();
+
+        res.status(httpStatus.CREATED).json({ message: "New User Registered!" });
+
+    } catch (e) {
+        res.json({ message: `Something went Wrong ${e}` });
+    }
+}
+
+const login = async (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).json({})
+    }
+    try {
+        const isExistingUser = await User.findOne({ username: username });
+        if (!isExistingUser) {
+            return res.status(httpStatus.NOT_FOUND).json({ message: "User Not Found" });
+        }
+        if (bcrypt.compare(password, isExistingUser.password)) {
+            let token = crypto.randomBytes(20).toString("hex");
+            isExistingUser.token = token;
+            await isExistingUser.save();
+            return res.status(httpStatus.OK).json({ token: token });
+        }
+    } catch (e) {
+        res.status(500).json({ message: `Something went Wrong ${e}` })
+    }
+}
+
+export { login, register };
