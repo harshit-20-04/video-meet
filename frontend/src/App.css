@@ -1,0 +1,126 @@
+
+.landing-bg-settings{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./bg-photo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav-container{
+    padding: 0 1.5em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand-name{
+    padding:0.65em 0;
+}
+
+.navbar-collapse{
+    flex-grow: 0;
+    flex-basis:100%;
+    align-items: center;
+}
+
+.hero-container{
+    color: rgb(156, 172, 127);
+    line-height: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+}
+
+.text-white:hover{
+    color: orange !important;
+}
+
+.hero-container-image img{
+    height: 65vh;
+    width: 100%;
+}
+div.btn{
+    background-color: orange;
+}
+div.btn a{
+    text-decoration: none;
+    color: white;
+}
+
+.login-container{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-lock-icon{
+    text-align: center;
+    padding-bottom: 1rem;
+    color: orange;
+}
+
+.lock-icon{
+    color:orange;
+    border: orange solid;
+    border-radius: 22.5%;
+    margin: 1rem;
+    padding: 0.25rem;
+}
+
+.login-form{
+    margin: 5rem;
+    padding: 5rem;
+    color: white;
+}
+
+.register-container{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+}
+
+
+.user-icon{
+    color:orange;
+    border: orange solid;
+    border-radius: 22.5%;
+    margin: 1rem;
+    padding: 0.25rem;
+}
+
+.register-user-icon{
+    text-align: center;
+    padding-bottom: 1rem;
+    color: orange;
+}
+
+.register-form{
+    padding: 5rem;
+    margin: 5rem;
+    width: 500px;
+    color: white;
+}
+
+.image-container{
+    height: 100vh;
+    width: 50vw;
+    background-color: rgb(33, 33, 33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.image{
+    height: 50%;
+}
+.link{
+    color: aliceblue;
+    a{
+        text-decoration: none;
+        color: orange;
+    }
+}
