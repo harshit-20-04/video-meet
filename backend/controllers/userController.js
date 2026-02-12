@@ -40,11 +40,16 @@ const login = async (req, res) => {
         if (!isExistingUser) {
             return res.status(httpStatus.NOT_FOUND).json({ message: "User Not Found" });
         }
-        if (bcrypt.compare(password, isExistingUser.password)) {
+        const isPasswordCorrect = await bcrypt.compare(password, isExistingUser.password)
+        if (isPasswordCorrect) {
             let token = crypto.randomBytes(20).toString("hex");
             isExistingUser.token = token;
             await isExistingUser.save();
+            
             return res.status(httpStatus.OK).json({ token: token });
+        }
+        else{
+            return res.status(httpStatus.UNAUTHORIZED).json({message:"Invalid UserName or password"})
         }
     } catch (e) {
         res.status(500).json({ message: `Something went Wrong ${e}` })
