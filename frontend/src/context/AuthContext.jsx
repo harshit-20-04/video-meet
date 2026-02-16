@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       })
       if (req.status === httpStatus.OK) {
         localStorage.setItem("token", req.data.token);
-        setTimeout(router('/'), 2000);
+        setTimeout(router('/home'), 2000);
       }
     }
     catch (e) {
@@ -47,9 +47,29 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  const getHistoryOfUser = async()=>{
+    try{
+      let request = await client.get("/get_all_activity", {
+        params:{
+          token: localStorage.getItem('token')
+        }
+      });
+      return request.data;
+    }catch(e){ throw e};
+  }
   
+  const addUserHistory = async (meetingCode)=>{
+    try{
+      let request = await client.post("/add_to_activity", {
+          token: localStorage.getItem("token"),
+          meetingId: meetingCode,
+      })
+      return request;
+    }catch(e){throw e};
+  }
+
   const data = {
-    userData, setUserData, handleRegister, handleLogin
+    userData, setUserData, handleRegister, handleLogin, getHistoryOfUser, addUserHistory
   }
   return (
     <AuthContext.Provider value={data}>

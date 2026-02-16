@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -11,7 +10,6 @@ export const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link href="/register" className='text-white'>Register</Nav.Link>
             <Nav.Link href="/login" className='text-white'>Login</Nav.Link>
-            <Nav.Link href="#link" className='text-white'>Join as Guest</Nav.Link>
           </Nav>
         </Navbar>
       </div>

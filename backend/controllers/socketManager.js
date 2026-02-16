@@ -20,11 +20,11 @@ export const connectToSocket = (server)=>{
             }
             connections[path].push(socket.id);
             timeOnline[socket.id] = new Date();
-            for (let a= 0; a< connections[path].length; a++){
+            for (let a= 0; a< connections[path].length; ++a){
                 socketServer.to(connections[path][a]).emit("user-joined", socket.id, connections[path]);
             }
             if (messages[path] !== undefined){
-                for(let a = 0; a < messages[path].length; a++){
+                for(let a = 0; a < messages[path].length; ++a){
                     socketServer.to(socket.id).emit("chat-message", messages[path][a]['data'],
                         messages[path][a]['sender'], messages[path][a]['socket-id-sender']
                     )
@@ -36,10 +36,10 @@ export const connectToSocket = (server)=>{
             socketServer.to(toId).emit('signal', socket.id, message);
         })
 
-        socket.on("chat-message", (data, sender)=>{
-            const [matchingRoom, found] = Object.entries(connections).reduce(
+        socket.on("chat-message", async (data, sender)=> {
+            const [matchingRoom, found] =  Object.entries(connections).reduce(
                 ([room, isFound], [roomKey, roomValue])=>{
-                    if (!found && roomValue.includes(socket.id)){
+                    if (!(isFound) && roomValue.includes(socket.id)){
                         return [roomKey, true];
                     }
                     return[room, isFound];
@@ -50,7 +50,7 @@ export const connectToSocket = (server)=>{
                     messages[matchingRoom] = [];
                 }
                 messages[matchingRoom].push({'sender' : sender, 'data': data, "socket-id-sender": socket.id});
-                console.log("message", key," : ", sender, data);
+                console.log("message", matchingRoom," : ", sender, data);
                 connections[matchingRoom].forEach((item)=>{
                     socketServer.to(item).emit("chat-message", data, sender, socket.id);
                 })
@@ -60,8 +60,8 @@ export const connectToSocket = (server)=>{
         socket.on("disconnect", ()=>{
             var diffTime = Math.abs(timeOnline[socket.id]-new Date());
             var key;
-            for (const[k, v] of JSON.stringify(Object.entries(connections))){
-                for (let a = 0; a < v.length; a++){
+            for (const[k, v] of JSON.parse(JSON.stringify(Object.entries(connections)))){
+                for (let a = 0; a < v.length; ++a){
                     if (v[a] === socket.id){
                         key = k;
                         for(let i = 0; i < connections[key].length; i++){

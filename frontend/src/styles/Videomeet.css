@@ -1,0 +1,133 @@
+.main-container{
+    background-color: black;
+}
+
+.meetVideoContainer{
+    display: flex;
+    justify-content: center;
+    margin:0;
+    padding: 1rem;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.meetUserVideo{
+    position:absolute;
+    bottom: 10vh;
+    height: 25vh;
+    width: auto;
+    left: 1rem;
+    border-radius: 20px;
+}
+
+.buttonContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100vh;
+    bottom: 0;
+    text-align: center;
+}
+
+.conferenceView{
+    display: flex;
+    padding: 10px;
+    gap:10px
+}
+
+.conferenceView video{
+    width:40vw;
+    height: 20vh;
+    min-width: 30vw;
+    border-radius: 10px;
+}
+.chat-container{
+    width: 30%;
+    height: 100vh;
+    background-color: antiquewhite;
+    padding: 0.25rem;
+    gap:10px;
+}
+
+.chat-startcontainer{
+    height: 93%;
+    overflow-y: auto;
+}
+
+.chat-container input{
+    margin: 0.15rem;
+    padding:1rem;
+    bottom:0;
+    width: 300px;
+    border-radius: 10px;
+    height: 45px;
+    font-size: large;
+    border: none;
+}
+
+.chat-container button{
+    margin-left: 0.25rem;
+}
+
+.newMessageSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+
+.guestContainer{
+    height: 95vh;
+    padding: 3rem;
+    margin:0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.guestContainer video{
+    width: 30vw;
+    padding: 1rem;
+}
+
+.guestMeetCode{
+    margin-top: 1rem;
+    padding: 0.45rem;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+    color: rgb(248, 248, 248);
+    background-color: black;
+    border: 0.1rem rgb(120, 128, 176) solid;
+}
+
+.wrapContainer{
+    margin: 1rem;
+    padding:1rem;
+}
+
+.wrapContainer button{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    color: white;
+    border: 0.1rem rgb(120, 128, 176) solid;
+}
+
+.wrapContainer button:hover{
+    background-color: orange;
+    color: black;
+}
+
+.nav-type{
+    color: white;
+    font-size: x-large;
+    text-decoration: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    position: sticky;
+}
+.nav-type:hover{
+    color: orange;
+}

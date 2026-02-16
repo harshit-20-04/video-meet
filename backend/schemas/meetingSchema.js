@@ -1,4 +1,3 @@
-import User from "../models/userModel";
 import {Schema} from "mongoose";
 
 const MeetingSchema = new Schema({

@@ -3,11 +3,10 @@ import Form from 'react-bootstrap/Form';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from 'react-router';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext.jsx';
 import Snackbar from '@mui/material/Snackbar';
+import { BackButton } from './BackButton.jsx';
 
 
 export const Register = () => {
@@ -48,6 +47,7 @@ export const Register = () => {
           <Link to='/login'>Login</Link>
         </div>
       </div>
+      <BackButton />
       <div className='register-form'>
         <div className='register-user-icon'>
           <h3>Register</h3>
@@ -129,6 +129,7 @@ export const Login = () => {
 
   return (
     <div className='login-container'>
+      <BackButton />
       <div className='login-form'>
         <div className='login-lock-icon'>
           <h3>Login</h3>
