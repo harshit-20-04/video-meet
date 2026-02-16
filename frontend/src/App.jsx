@@ -2,13 +2,13 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { LandingPage } from './components/LandingPage.js';
-import { Login } from './components/Authentication.js';
-import { Register } from './components/Authentication.js';
+import { LandingPage } from './pages/LandingPage.jsx';
+import { Login } from './pages/Authentication.jsx';
+import { Register } from './pages/Authentication.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
-import { Videomeet } from './components/Videomeet.jsx';
-import Home from './components/Home.js';
-import { History } from './components/History.jsx';
+import { Videomeet } from './pages/Videomeet.jsx';
+import Home from './pages/Home.jsx';
+import { History } from './pages/History.jsx';
 
 const App = () => {
   return (
