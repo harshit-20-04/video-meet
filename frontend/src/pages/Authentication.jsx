@@ -41,7 +41,7 @@ export const Register = () => {
   return (
     <div className='register-container'>
       <div className='image-container'>
-        <img src='./bannerforlogin.png' alt='register' className='image'/>
+        <img src='../public/bannerforlogin.png' alt='register' className='image'/>
         <div className='link'>
           <span>Already have a Account?</span> 
           <Link to='/login'>Login</Link>
@@ -159,7 +159,7 @@ export const Login = () => {
         </Form>
       </div>
       <div className='image-container'>
-        <img src='./bannerforlogin.png' alt='register' className='image'/>
+        <img src='../public/bannerforlogin.png' alt='register' className='image'/>
         <div className='link'>
           <span>Don't Have a Account? </span>
           <Link to='/register'>Register</Link>

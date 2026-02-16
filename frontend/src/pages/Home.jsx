@@ -52,7 +52,7 @@ const Home = ({ props }) => {
               <Button variant="outlined" onClick={handleJoinVideoCall}>Enter</Button>
             </div>
           </div>
-          <p><img src="./logo.svg"/></p>
+          <p><img src="../public/logo.svg"/></p>
         </div>
       </div>
     </div>
