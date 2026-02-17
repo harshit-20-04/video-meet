@@ -17,7 +17,7 @@ import Badge from '@mui/material/Badge';
 
 
 
-const serverurl = import.meta.env.SERVER_URL;
+const serverurl = import.meta.env.VITE_SERVER_URL;
 const peerConfigconnections = {
     'iceServers': [
         { 'urls': "stun:stun.l.google.com:19302" }
