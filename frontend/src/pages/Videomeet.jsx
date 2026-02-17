@@ -389,12 +389,12 @@ export const Videomeet = () => {
             tracks.forEach(track => track.stop());
         } catch (e) { console.log(e) }
 
-        window.location.href = "/home";
+        window.location.href = "/";
         routeTo('/home');
     }
 
     let handleLogo= ()=>{
-        window.location.href="/home";
+        window.location.href="/";
         routeTo('/home');
     }
 
