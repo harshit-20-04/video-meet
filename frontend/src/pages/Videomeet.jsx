@@ -16,7 +16,8 @@ import "../styles/Videomeet.css";
 import Badge from '@mui/material/Badge';
 
 
-const serverurl = "http://localhost:8000";
+
+const serverurl = import.meta.env.SERVER_URL;
 const peerConfigconnections = {
     'iceServers': [
         { 'urls': "stun:stun.l.google.com:19302" }
@@ -389,10 +390,12 @@ export const Videomeet = () => {
         } catch (e) { console.log(e) }
 
         window.location.href = "/home";
+        routeTo('/home');
     }
 
     let handleLogo= ()=>{
         window.location.href="/home";
+        routeTo('/home');
     }
 
     return (
@@ -442,7 +445,6 @@ export const Videomeet = () => {
                     <div className='conferenceView'>
                         {videos.map((video) => (
                             <div key={video.socketId + Math.random()}>
-                                <h2>{video.socketId}</h2>
                                 <video
                                     data-socket={video.socketId + Math.random()}
                                     ref={(ref) => {

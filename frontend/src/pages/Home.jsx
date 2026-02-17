@@ -47,7 +47,6 @@ const Home = ({ props }) => {
           <div className="meet-container">
             <h4>Quality Video Call for Everyone</h4>
             <div className="meet-code">
-              <h2 className="text-white">{meetingCode}</h2>
               <input placeholder="Enter Meeting code" value={meetingCode} onChange={(e) => setMeetingCode(e.target.value)} />
               <Button variant="outlined" onClick={handleJoinVideoCall}>Enter</Button>
             </div>
