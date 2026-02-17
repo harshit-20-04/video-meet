@@ -12,7 +12,7 @@ export const HeroSection = () => {
                 </div>
             </div>
             <div className='hero-container-image'>
-                <img src="../mobile.png" alt="mobile" />
+                <img src="/mobile.png" alt="mobile" />
             </div>
         </div>
     )
