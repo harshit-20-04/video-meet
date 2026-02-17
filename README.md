@@ -58,7 +58,7 @@ project-root/
 │   └── package-lock.json
 │
 └── README.md
-
+```
 
 ##  Installation
 Follow these steps to run the project locally:
@@ -105,7 +105,7 @@ npm start
 
 The app will run on:
 ```
-Frontend: http://localhost:3000
+Frontend: http://localhost:5173
 Backend: http://localhost:8000
 ```
 
@@ -131,11 +131,19 @@ Contributions are welcome!
 3. Commit your changes
 4. Push and create a pull request
 
-##  License
-This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 **Harshit Sharma**
+
+👋Full Stack Developer passionate about creating scalable and user-friendly web applications.
+
+💼 Skilled in MERN Stack, REST APIs, and modern front-end development.
+
+📫 Reach me at: harshit2004@zohomail.in
+
+🔗 GitHub: [harshit-20-04](https://github.com/harshit-20-04)
+
+💼 LinkedIn: [Harshit Sharma](https://www.linkedin.com/in/harshit-sharma-ac8896/)
 
 ---
 
