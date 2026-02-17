@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 export const AuthContext = createContext({});
 
 const client = axios.create({
-  baseURL: "http://13.51.167.41/api/v1/user",
+  baseURL: "http://video-meet.duckdns.org/api/v1/user",
 })
 
 export const AuthProvider = ({ children }) => {
