@@ -46,9 +46,12 @@
 .chat-container{
     width: 30%;
     height: 100vh;
-    background-color: antiquewhite;
-    padding: 0.25rem;
+    background-color: rgb(255, 255, 255);
+    padding: 0rem;
     gap:10px;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 .chat-startcontainer{
@@ -60,7 +63,7 @@
     margin: 0.15rem;
     padding:1rem;
     bottom:0;
-    width: 300px;
+    width: 400px;
     border-radius: 10px;
     height: 45px;
     font-size: large;

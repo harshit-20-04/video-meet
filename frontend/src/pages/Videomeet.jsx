@@ -389,12 +389,12 @@ export const Videomeet = () => {
             tracks.forEach(track => track.stop());
         } catch (e) { console.log(e) }
 
-        window.location.href = "/";
+        window.location.href = "/home";
         routeTo('/home');
     }
 
     let handleLogo= ()=>{
-        window.location.href="/";
+        window.location.href="/home";
         routeTo('/home');
     }
 
@@ -464,9 +464,9 @@ export const Videomeet = () => {
                     <div className="chat-startcontainer">
                         {messages.map((item, index) => {
                             return (
-                                <div key={index}>
+                                <div key={index} className='mx-2'>
                                     <p style={{ fontWeight: "bold" }}>{item.sender}</p>
-                                    <p>{item.data}</p>
+                                    <p className='mx-2'>{item.data}</p>
                                 </div>
                             )
                         })}

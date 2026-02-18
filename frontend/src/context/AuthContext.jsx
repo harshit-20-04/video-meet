@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 export const AuthContext = createContext({});
 
 const url = import.meta.env.VITE_SERVER_URL;
-console.log(url);
+
 const client = axios.create({
   baseURL: `${url}/api/v1/user`,
 })
