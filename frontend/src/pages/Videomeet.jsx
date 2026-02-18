@@ -389,7 +389,7 @@ export const Videomeet = () => {
             tracks.forEach(track => track.stop());
         } catch (e) { console.log(e) }
 
-        window.location.href = "/";
+        window.location.href = "/home";
         routeTo('/home');
     }
 
