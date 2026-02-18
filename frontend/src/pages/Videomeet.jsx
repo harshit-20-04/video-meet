@@ -391,7 +391,6 @@ export const Videomeet = () => {
 
         
         routeTo('/home');
-        window.location.href = "/home";
     }
 
     let handleLogo= ()=>{
