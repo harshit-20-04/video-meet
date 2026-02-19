@@ -14,6 +14,7 @@ import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
 import "../styles/Videomeet.css";
 import Badge from '@mui/material/Badge';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -46,6 +47,32 @@ export const Videomeet = () => {
     let [username, setUserName] = useState("");
     const videoRef = useRef([]);
     let [videos, setVideos] = useState([]);
+
+    const handleRemoteVideo = (socketId, stream) => {
+        if (!stream || socketId === socketIdRef.current) return;
+
+        setVideos((prevVideos) => {
+            const existingVideoIndex = prevVideos.findIndex((videoItem) => videoItem.socketId === socketId);
+            if (existingVideoIndex > -1) {
+                const updatedVideos = [...prevVideos];
+                updatedVideos[existingVideoIndex] = { ...updatedVideos[existingVideoIndex], stream };
+                videoRef.current = updatedVideos;
+                return updatedVideos;
+            }
+
+            const updatedVideos = [
+                ...prevVideos,
+                {
+                    socketId,
+                    stream,
+                    autoPlay: true,
+                    playsInline: true
+                }
+            ];
+            videoRef.current = updatedVideos;
+            return updatedVideos;
+        });
+    };
 
     useEffect(() => {
         getPermissions();
@@ -214,41 +241,26 @@ export const Videomeet = () => {
             socketIdRef.current = socketRef.current.id;
             socketRef.current.on('chat-message', addMessage)
             socketRef.current.on('user-left', (id) => {
-                setVideos((videos) => videos.filter((video) => video.socketId !== id))
+                setVideos((prevVideos) => {
+                    const updatedVideos = prevVideos.filter((videoItem) => videoItem.socketId !== id);
+                    videoRef.current = updatedVideos;
+                    return updatedVideos;
+                })
             })
             socketRef.current.on('user-joined', (id, clients) => {
                 clients.forEach((socketListId) => {
                     if (socketListId === socketIdRef.current) return;
-                    connections.current[socketListId] = new RTCPeerConnection(peerConfigconnections);
+                    if (!connections.current[socketListId]) {
+                        connections.current[socketListId] = new RTCPeerConnection(peerConfigconnections);
+                    }
                     connections.current[socketListId].onicecandidate = function (event) {
                         if (event.candidate != null) {
                             socketRef.current.emit("signal", socketListId, JSON.stringify({ 'ice': event.candidate }));
                         }
                     }
                     connections.current[socketListId].ontrack = (event) => {
-                        let videoExists = videoRef.current.find(video => video.socketId === socketListId);
-                        if (videoExists) {
-                            setVideos((videos) => {
-                                const updateVideos = videos.map(video =>
-                                    video.socketId === socketListId ? { ...video, stream: event.streams[0] } : video
-                                );
-                                videoRef.current = updateVideos;
-                                return updateVideos;
-                            })
-                        } else {
-                            if (videoRef.current.some(v => v.socketId === socketListId)) return;
-                            let newVideo = {
-                                socketId: socketListId,
-                                stream: event.streams[0],
-                                autoPlay: true,
-                                playsInline: true
-                            }
-                            setVideos(videos => {
-                                const updateVideos = [...videos, newVideo];
-                                videoRef.current = updateVideos;
-                                return updateVideos;
-                            })
-                        }
+                        const [stream] = event.streams;
+                        handleRemoteVideo(socketListId, stream);
                     }
                     if (window.localStream !== undefined && window.localStream !== null) {
                         window.localStream.getTracks().forEach(track => {
@@ -393,9 +405,13 @@ export const Videomeet = () => {
         routeTo('/home');
     }
 
-    let handleLogo= ()=>{
-        window.location.href="/home";
+    let handleLogo = () => {
+        window.location.href = "/home";
         routeTo('/home');
+    }
+
+    let handleOpenChat = ()=>{
+        setOpenChat(!openChat);
     }
 
     return (
@@ -444,9 +460,9 @@ export const Videomeet = () => {
                     <video className='meetUserVideo' ref={localVideoRef} autoPlay muted></video>
                     <div className='conferenceView'>
                         {videos.map((video) => (
-                            <div key={video.socketId + Math.random()}>
+                            <div key={video.socketId}>
                                 <video
-                                    data-socket={video.socketId + Math.random()}
+                                    data-socket={video.socketId}
                                     ref={(ref) => {
                                         if (ref && video.stream) {
                                             ref.srcObject = video.stream;
@@ -461,6 +477,11 @@ export const Videomeet = () => {
             }
             {openChat === true ?
                 <div className='chat-container'>
+                    <div className='cross-button'>
+                        <IconButton onClick={handleOpenChat}>
+                            <CloseIcon className='text-white' />
+                        </IconButton>
+                    </div>
                     <div className="chat-startcontainer">
                         {messages.map((item, index) => {
                             return (

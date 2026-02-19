@@ -238,3 +238,15 @@
         width: min(420px, 32vw);
     }
 }
+
+.cross-button{
+    padding-top: 1rem;
+    padding-left: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cross-button button{
+    background-color: orange;
+}
