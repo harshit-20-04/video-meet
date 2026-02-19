@@ -3,11 +3,12 @@ a{
 }
 
 .landing-bg-settings{
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     background-image: url("/bg-photo.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 .nav-container{
@@ -15,6 +16,8 @@ a{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 .brand-name{
@@ -30,10 +33,25 @@ a{
 
 .hero-container{
     color: rgb(156, 172, 127);
-    line-height: 0.5rem;
+    line-height: 1.2;
     display: flex;
     justify-content: space-evenly;
     align-items:center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-container-text h4{
+    font-size: clamp(1.5rem, 1.1rem + 1vw, 2.25rem);
+}
+
+.hero-container-text p{
+    font-size: clamp(1rem, 0.9rem + 0.45vw, 1.25rem);
+}
+
+.hero-container-text{
+    max-width: 440px;
 }
 
 .text-white:hover{
@@ -41,23 +59,32 @@ a{
 }
 
 .hero-container-image img{
-    height: 65vh;
-    width: 100%;
+    max-height: 65vh;
+    width: min(100%, 420px);
+    object-fit: contain;
 }
+
 div.btn{
     background-color: orange;
+    width: fit-content;
+    padding: 0.5rem 0.9rem;
+    border-radius: 0.5rem;
 }
+
 div.btn a{
     text-decoration: none;
     color: white;
 }
 
-.login-container{
-    height: 100vh;
+.login-container,
+.register-container{
+    min-height: 100vh;
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1rem;
 }
 
 .login-lock-icon{
@@ -66,28 +93,7 @@ div.btn a{
     color: orange;
 }
 
-.lock-icon{
-    color:orange;
-    border: orange solid;
-    border-radius: 22.5%;
-    margin: 1rem;
-    padding: 0.25rem;
-}
-
-.login-form{
-    margin: 5rem;
-    padding: 5rem;
-    color: white;
-}
-
-.register-container{
-    display: flex;
-    align-items: center;
-    background-color: black;
-    height: 100vh;
-}
-
-
+.lock-icon,
 .user-icon{
     color:orange;
     border: orange solid;
@@ -96,31 +102,37 @@ div.btn a{
     padding: 0.25rem;
 }
 
+.login-form,
+.register-form{
+    margin: 2rem;
+    padding: 2.5rem;
+    color: white;
+    width: min(100%, 540px);
+}
+
 .register-user-icon{
     text-align: center;
     padding-bottom: 1rem;
     color: orange;
 }
 
-.register-form{
-    padding: 5rem;
-    margin: 5rem;
-    width: 500px;
-    color: white;
-}
-
 .image-container{
-    height: 100vh;
+    min-height: 100vh;
     width: 50vw;
     background-color: rgb(33, 33, 33);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 1rem;
 }
+
 .image{
-    height: 50%;
+    max-height: 50%;
+    width: min(100%, 420px);
+    object-fit: contain;
 }
+
 .link{
     color: aliceblue;
     a{
@@ -130,36 +142,42 @@ div.btn a{
 }
 
 .back-button{
-    padding-top: 2rem;
-    padding-left: 2rem;
-    position: relative;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    position: absolute;
     top: 0;
-    height: 100vh;
+    left: 0;
 }
 
 .home-container{
     background-image: url('/bg-photo.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .meet-container{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 100vw;
-    height: 50vh;
+    width: 100%;
+    min-height: 50vh;
     color: white;
     flex-direction: column;
+    text-align: center;
+    padding: 1rem;
 }
 
+.meet-container h4{
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2.1rem);
+}
 
 .meet-code{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .meet-code input:hover{
@@ -174,6 +192,7 @@ div.btn a{
     border-radius: 0.5rem;
     margin: 0.1rem;
     padding: 0.70rem;
+    width: min(340px, 80vw);
 }
 
 .meet-code button{
@@ -189,10 +208,102 @@ div.btn a{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 75vh;
-    width:90vw;
+    min-height: 75vh;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 1.5rem;
 }
 
 .logoMain img{
-    width: 25vw;
+    width: min(280px, 60vw);
+}
+
+@media (min-width: 1024px){
+    .landing-bg-settings,
+    .home-container{
+        background-position: center;
+    }
+
+    .hero-container,
+    .logoMain{
+        width: min(1200px, 94vw);
+        margin: 0 auto;
+    }
+
+    .hero-container{
+        min-height: 78vh;
+    }
+
+    .login-container,
+    .register-container{
+        padding: 2rem 3rem;
+    }
+
+    .login-form,
+    .register-form{
+        margin: 0;
+        width: min(42vw, 560px);
+    }
+
+    .image-container{
+        width: min(50vw, 700px);
+    }
+
+    .meet-code{
+        width: min(620px, 100%);
+    }
+
+    .meet-code input{
+        width: min(420px, 70vw);
+    }
+}
+
+@media (max-width: 992px){
+    .logoMain{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .image-container{
+        width: 100%;
+        min-height: 40vh;
+    }
+
+    .login-container,
+    .register-container{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px){
+    .nav-container{
+        padding: 0 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .brand-name{
+        font-size: 1.05rem;
+    }
+
+    .hero-container{
+        padding: 2rem 1rem;
+    }
+
+    .hero-container-text h4{
+        font-size: 1.35rem;
+    }
+
+    .hero-container-text p{
+        margin-top: 0.75rem;
+    }
+
+    .login-form,
+    .register-form{
+        padding: 1.5rem;
+        margin: 1rem 0.5rem;
+    }
 }
