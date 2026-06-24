@@ -1,7 +1,10 @@
 # VideoMeet – Real-Time Video Conferencing Platform
 
 ##  Overview
-This project is a web application designed to [briefly describe your project purpose here]. It focuses on providing a clean user interface, efficient performance, and a seamless user experience.
+Developed a full-stack real-time video conferencing web application that enables users to join
+and host video meetings with seamless audio/video communication. This project leverages WebRTC for
+peer-to-peer media streaming and Socket.io for real-time signaling between clients and server, ensuring
+efficient connection setup and interaction.
 
 ##  Features
 - User authentication and authorization
@@ -139,7 +142,7 @@ Contributions are welcome!
 
 💼 Skilled in MERN Stack, REST APIs, and modern front-end development.
 
-📫 Reach me at: harshit2004@zohomail.in
+📫 Reach me at: 05harshit.sharma2004@gmail.com
 
 🔗 GitHub: [harshit-20-04](https://github.com/harshit-20-04)
 
